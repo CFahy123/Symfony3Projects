@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    <h1>Best cars, best prices</h1>
+{% endblock %}
+{% block body%}
+    <h1>welcome to autotrader</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+
+    {{ form_end(form)}}
+
+    <table class="table">
+        <tr>
+            <th>Make</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Year</th>
+            <th>Navigation</th>
+            <th>details</th>
+        </tr>
+        <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.make.name}}</td>
+                    <td>{{ car.model.name}}</td>
+                    <td>{{ car.description}}</td>
+                    <td>{{ car.price}}</td>
+                    <td>{{ car.year}}</td>
+                    <td>{{ car.navigation}}</td>
+                    <td>
+                        <a href="{{ url("show_car", {id:car.id}) }}">Show Details</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

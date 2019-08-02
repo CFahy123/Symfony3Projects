@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+    {{ car.model.name}}
+{% endblock %}
+
+{% block body %}
+    <h1>
+        {{ car.make.name}}
+        {{ car.model.name }}
+    </h1>
+    <p>
+        {{car.description}}
+    </p>
+    <table class="table">
+        <tr>
+            <td>Year</td>
+            <td>{{ car.year }}</td>
+        </tr>
+
+        <tr>
+            <td>Navigation System</td>
+            <td>
+                {% if car.navigation %}
+                    <span class="glyphicon glyphicon-ok"></span>
+                {% else %}
+                    <span class="glyphicon glyphicon-remove"></span>
+                {% endif %}
+            </td>
+        </tr>
+
+        <tr>
+            <td>Price</td>
+            <td>{{ car.price }}</td>
+        </tr>
+    </table>
+    <a href="{{ url('offer')}}">Back</a>
+{% endblock %}
