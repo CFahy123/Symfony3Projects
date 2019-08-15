@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Cars list</h1>
 
-    <table>
+    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -15,31 +15,31 @@
             </tr>
         </thead>
         <tbody>
-        {% for car in cars %}
-            <tr>
-                <td><a href="{{ path('car_show', { 'id': car.id }) }}">{{ car.id }}</a></td>
-                <td>{{ car.price }}</td>
-                <td>{{ car.year }}</td>
-                <td>{{ car.description }}</td>
-                <td>{% if car.navigation %}Yes{% else %}No{% endif %}</td>
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('car_show', { 'id': car.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('car_edit', { 'id': car.id }) }}">edit</a>
-                        </li>
-                    </ul>
-                </td>
-            </tr>
-        {% endfor %}
+            {% for car in cars %}
+                <tr>
+                    <td>
+                        <a href="{{ path('car_show', { 'id': car.id }) }}">{{ car.id }}</a>
+                    </td>
+                    <td>{{ car.price }}</td>
+                    <td>{{ car.year }}</td>
+                    <td>{{ car.description }}</td>
+                    <td>
+                        {% if car.navigation %}Yes{% else %}No
+                        {% endif %}
+                    </td>
+                    <td>
+                        <ul>
+                            <li><a href="{{ path('car_show', { 'id': car.id }) }}">show</a></li>
+                            <li><a href="{{ path('car_edit', { 'id': car.id }) }}">edit</a></li>
+                            <li><a href="{{ path('car_promote', { 'id': car.id }) }}">promote</a></li>
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 
     <ul>
-        <li>
-            <a href="{{ path('car_new') }}">Create a new car</a>
-        </li>
+        <li><ahref="{{path('car_new')}}">Create a new car</a></li>
     </ul>
 {% endblock %}
